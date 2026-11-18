@@ -1,0 +1,42 @@
+    1  sudo setenforce 0
+    2  sudo groupadd students
+    3  sudo useradd -u 1234 -G students -m -s /bin/bash user1
+    4  sudo passwd user1
+    5  sudo chage -M 90 user1
+    6  id user1
+    7  chage -l user1
+    8  chage -1 user1
+    9  sudo chage -l user1
+   10  sudo find / -perm -4000 -type f 2>/dev/null > ~/setuid_files.out
+   11  ps -eo pid,ruid,euid,comm | awk '$2 != 0 && $3 == 0' | tee ~/process_monitoring.out
+   12  sudo cp /bin/cat/home/user1/mycat
+   13  sudo cp /bin/cat /home/user1/mycat
+   14  sudo chown root:root /home/user1/mycat
+   15  sudo chmod u+s /home/user1/mycat
+   16  ls -l /home/user1/mycat
+   17  sudo stat /home/user1/mycat >> ~/stat.out
+   18  sudo ls -l /home/user1/mycat
+   19  sudo stat /home/user1/mycat >> ~/stat.out
+   20  su - user1 -c "/home/user1/myccat /etc/shadow | head -n 3"
+   21  su - user1 -c "/home/user1/mycat /etc/shadow | head -n 3"
+   22  sudo cp /bin/chown /home/user1/mychown
+   23  sudo setcap cap_chown+ep /home/user1/mychown
+   24  getcap /home/user1/mychown
+   25  getcap /home/user1/mychown > ~/getcap.out
+   26  sudo getcap /home/user1/mychown
+   27  sudo getcap /home/user1/mychown > ~/getcap.out
+   28  sudo stat /home/user1/mychown >> ~/stat.out
+   29  touch /home/user1/testfile
+   30  su - user1 -c "/home/user1/mychown root /home/user1/testfile"
+   31  sudo touch /home/user1/testfile
+   32  su - user1 -c "/home/user1/mychown root /home/user1/testfile"
+   33  ls -l /home/user1/testfile
+   34  sudo ls -l /home/user1/testfile
+   35  sudo visudo
+   36  sudo killall -9 visudo
+   37  sudo rm -f /etc/sudoers.tmp
+   38  sudo EDITOR=nano visudo
+   39  sudo visudo -c
+   40  su - user1 -c "sudo /usr/bin/date -s '2026-01-01 12:00:00'"
+   41  su - user1
+   42  history > ~/history.out
